@@ -14,7 +14,7 @@ Site para ajudar a encontrar pets perdidos na cidade do Rio de Janeiro.
 ## Pré-requisitos
 
 - Node.js 18+
-- Projeto Firebase com Firestore habilitado
+- Projeto Firebase
 
 ## Instalação
 
