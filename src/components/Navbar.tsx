@@ -12,7 +12,7 @@ export default function Navbar() {
     <nav className="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-sm shadow-sm z-50">
       <div className="max-w-6xl mx-auto flex items-center justify-between px-4 py-3">
         <Link to="/" className="flex items-center gap-2">
-          <img src="/logo.png" alt="Encontre seu Amigo" className="h-10" />
+          <img src={import.meta.env.BASE_URL + "logo.png"} alt="Encontre seu Amigo" className="h-10" />
           <span className="font-bold text-lg text-emerald-700 hidden sm:block">
             Encontre seu Amigo
           </span>
