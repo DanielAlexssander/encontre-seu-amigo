@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { collection, query, where, orderBy, getDocs } from "firebase/firestore";
+import { collection, query, orderBy, getDocs } from "firebase/firestore";
 import { db } from "../lib/firebase";
 import { BAIRROS_RJ } from "../lib/bairros";
 import PetCard from "../components/PetCard";
@@ -15,7 +15,7 @@ interface Pet {
 }
 
 export default function Home() {
-  const [pets, setPets] = useState<Pet[]>([]);
+  const [allPets, setAllPets] = useState<Pet[]>([]);
   const [bairroFilter, setBairroFilter] = useState("");
   const [loading, setLoading] = useState(true);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
@@ -25,18 +25,18 @@ export default function Home() {
       setLoading(true);
       try {
         const petsRef = collection(db, "pets");
-        const q = bairroFilter
-          ? query(petsRef, where("bairro", "==", bairroFilter), orderBy("createdAt", "desc"))
-          : query(petsRef, orderBy("createdAt", "desc"));
+        const q = query(petsRef, orderBy("createdAt", "desc"));
         const snapshot = await getDocs(q);
-        setPets(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() } as Pet)));
+        setAllPets(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() } as Pet)));
       } catch {
-        setPets([]);
+        setAllPets([]);
       }
       setLoading(false);
     }
     fetchPets();
-  }, [bairroFilter]);
+  }, []);
+
+  const pets = bairroFilter ? allPets.filter((p) => p.bairro === bairroFilter) : allPets;
 
   return (
     <main className="pt-20 min-h-screen bg-gradient-to-b from-emerald-50 to-white">
