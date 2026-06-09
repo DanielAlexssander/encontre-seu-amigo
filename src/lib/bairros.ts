@@ -1,0 +1,17 @@
+export const BAIRROS_RJ = [
+  "Barra da Tijuca",
+  "Botafogo",
+  "Campo Grande",
+  "Centro",
+  "Copacabana",
+  "Flamengo",
+  "Ipanema",
+  "Jacarepaguá",
+  "Leblon",
+  "Madureira",
+  "Méier",
+  "Recreio dos Bandeirantes",
+  "Santa Cruz",
+  "Tijuca",
+  "Vila Isabel",
+] as const;
