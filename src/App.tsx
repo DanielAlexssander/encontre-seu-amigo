@@ -6,7 +6,7 @@ import Registrar from "./pages/Registrar";
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/encontre-seu-amigo">
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
